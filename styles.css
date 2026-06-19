@@ -16,3 +16,5 @@
 .ingredient-list li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:5px}
 .instructions{margin:0;line-height:1.55;white-space:normal}
 @media(max-width:700px){.recipe-card,.meal-card{align-items:flex-start}.recipe-details{width:100%}.ingredient-list li{gap:8px}}
+
+.day-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0 16px}.day-summary>div{background:var(--soft,#f4f7f5);border:1px solid var(--border,#dfe7e2);border-radius:12px;padding:10px;text-align:center}.day-summary strong{display:block;font-size:1.05rem}.day-summary span{display:block;margin-top:2px;font-size:.78rem;color:var(--muted,#66736b)}.day-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.day-heading h3{margin:0}.day-heading>span{font-size:.85rem;color:var(--muted,#66736b);white-space:nowrap}@media(max-width:620px){.day-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.day-heading{align-items:flex-start;flex-direction:column;gap:4px}}

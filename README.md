@@ -35,3 +35,19 @@ W sekcji **Dane** dostępne są:
 
 Eksport tworzy arkusze: `Produkty`, `Przepisy`, `Skladniki`, `Plan_diety`, `Pomiary`.
 Najbezpieczniej wykonać eksport, edytować ten plik, a następnie zaimportować go ponownie. Import zastępuje aktualne dane zapisane online.
+
+## Koszyk zakupowy
+
+Zakładka **Koszyk** pozwala:
+- generować listę zakupów z planu diety dla wybranego zakresu dat,
+- sumować powtarzające się składniki,
+- grupować produkty według kategorii,
+- dodawać, edytować i usuwać pozycje ręcznie,
+- oznaczać produkty jako kupione,
+- eksportować i importować arkusz `Lista_zakupow` w Excelu.
+
+Produkty mają teraz pole `Kategoria`, wykorzystywane przy generowaniu koszyka.
+
+## Nadpisywanie pliku Vercel Blob
+
+Zapis pliku `diet-app/diet-data.json` używa opcji `allowOverwrite: true`.

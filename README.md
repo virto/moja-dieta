@@ -1,0 +1,28 @@
+# Moja Dieta — PWA na Vercel z plikiem JSON
+
+Aplikacja nie używa bazy danych ani logowania. Wszystkie informacje są przechowywane w jednym pliku `diet-app/diet-data.json` w Vercel Blob.
+
+## Publikacja
+
+1. Rozpakuj projekt i umieść go w repozytorium GitHub.
+2. W Vercel wybierz **Add New → Project** i zaimportuj repozytorium.
+3. W projekcie Vercel otwórz **Storage**, utwórz **Blob store** i połącz go z projektem.
+4. Vercel automatycznie doda zmienną `BLOB_READ_WRITE_TOKEN`.
+5. Wykonaj ponowne wdrożenie: **Deployments → Redeploy**.
+6. Otwórz adres aplikacji. Pierwszy zapis utworzy plik JSON.
+
+## Instalacja na telefonie
+
+- Android/Chrome: menu → **Zainstaluj aplikację** lub **Dodaj do ekranu głównego**.
+- iPhone/Safari: Udostępnij → **Do ekranu początkowego**.
+
+## Bezpieczeństwo
+
+Brak logowania oznacza, że każda osoba znająca adres aplikacji może odczytać i zmienić dane. Nie przechowuj w niej informacji medycznych ani innych danych wrażliwych. Najbezpieczniej nie udostępniać adresu publicznie.
+
+## Uruchomienie lokalne
+
+1. `npm install`
+2. `vercel dev`
+
+Do lokalnego zapisu online potrzebny jest token Blob w pliku `.env.local`.

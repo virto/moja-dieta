@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#256d4a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Moja Dieta">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Moja Dieta</title>
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Moja Dieta</h1><p id="syncStatus">Łączenie z plikiem online…</p></div>
+    <div class="top-actions">
+      <button id="installBtn" class="ghost hidden">Zainstaluj</button>
+      <button id="syncBtn" class="ghost">Odśwież</button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Główne sekcje">
+    <button data-view="dashboard" class="active">Start</button>
+    <button data-view="products">Produkty</button>
+    <button data-view="recipes">Przepisy</button>
+    <button data-view="plan">Plan</button>
+    <button data-view="measurements">Pomiary</button>
+    <button data-view="settings">Dane</button>
+  </nav>
+
+  <main>
+    <section id="dashboard" class="view active"></section>
+    <section id="products" class="view"></section>
+    <section id="recipes" class="view"></section>
+    <section id="plan" class="view"></section>
+    <section id="measurements" class="view"></section>
+    <section id="settings" class="view"></section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="modalTitle"></h2><button id="modalClose" class="icon-btn" aria-label="Zamknij">×</button></div>
+      <form id="modalForm"></form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

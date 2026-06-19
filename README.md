@@ -51,3 +51,8 @@ Produkty mają teraz pole `Kategoria`, wykorzystywane przy generowaniu koszyka.
 ## Nadpisywanie pliku Vercel Blob
 
 Zapis pliku `diet-app/diet-data.json` używa opcji `allowOverwrite: true`.
+
+## Wersja v7
+- naprawiona wyszukiwarka produktów z widocznym tekstem i przyciskiem Wyczyść,
+- wyszukiwanie produktów podczas dodawania składników przepisu,
+- wyszukiwanie przepisów podczas dodawania posiłku do planu.

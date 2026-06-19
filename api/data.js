@@ -3,12 +3,13 @@ import { list, put } from '@vercel/blob';
 const DATA_PATH = 'diet-app/diet-data.json';
 
 const EMPTY_DATA = {
-  version: 1,
+  version: 2,
   updatedAt: null,
   products: [],
   recipes: [],
   dietPlan: [],
-  measurements: []
+  measurements: [],
+  shoppingList: []
 };
 
 function validData(value) {
@@ -16,7 +17,8 @@ function validData(value) {
     Array.isArray(value.products) &&
     Array.isArray(value.recipes) &&
     Array.isArray(value.dietPlan) &&
-    Array.isArray(value.measurements);
+    Array.isArray(value.measurements) &&
+    (value.shoppingList === undefined || Array.isArray(value.shoppingList));
 }
 
 async function findDataBlob() {
@@ -31,7 +33,8 @@ async function readData() {
   const response = await fetch(blob.downloadUrl || blob.url, { cache: 'no-store' });
   if (!response.ok) throw new Error('Nie udało się odczytać pliku JSON.');
   const data = await response.json();
-  return validData(data) ? data : EMPTY_DATA;
+  if (!validData(data)) return EMPTY_DATA;
+  return { ...data, shoppingList: Array.isArray(data.shoppingList) ? data.shoppingList : [] };
 }
 
 export default async function handler(request, response) {
@@ -54,7 +57,8 @@ export default async function handler(request, response) {
         products: body.products,
         recipes: body.recipes,
         dietPlan: body.dietPlan,
-        measurements: body.measurements
+        measurements: body.measurements,
+        shoppingList: Array.isArray(body.shoppingList) ? body.shoppingList : []
       };
 
       await put(DATA_PATH, JSON.stringify(saved, null, 2), {
@@ -62,7 +66,7 @@ export default async function handler(request, response) {
         contentType: 'application/json; charset=utf-8',
         addRandomSuffix: false,
         allowOverwrite: true,
-        cacheControlMaxAge: 0
+        cacheControlMaxAge: 60
       });
 
       return response.status(200).json(saved);

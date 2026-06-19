@@ -61,7 +61,7 @@ export default async function handler(request, response) {
         access: 'public',
         contentType: 'application/json; charset=utf-8',
         addRandomSuffix: false,
-        overwrite: true,
+        allowOverwrite: true,
         cacheControlMaxAge: 0
       });
 

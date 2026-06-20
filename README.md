@@ -80,3 +80,16 @@ W zakładce Plan lub Dane wybierz **Eksportuj PDF**. Wskaż zakres dat. Aplikacj
 
 ## Kopiowanie poprzedniego dnia
 W zakładce Plan diety użyj przycisku **Skopiuj poprzedni dzień**, wybierz dzień docelowy, a aplikacja skopiuje wszystkie posiłki z dnia wcześniejszego wraz z godzinami, przepisami i liczbą porcji.
+
+## Rozszerzenia v14
+- cele kalorii i makroskładników z paskami realizacji,
+- ostrzeżenia planu,
+- widok tygodniowy i kopiowanie poprzedniego tygodnia,
+- szablony dni,
+- ulubione, tagi, czas, trudność i notatki przepisów,
+- produkty „mam w domu”, wielkości i ceny opakowań,
+- wykres masy ciała,
+- personalizowane godziny posiłków,
+- jasny/ciemny/systemowy wygląd,
+- 5 automatycznych kopii danych,
+- wykrywanie jednoczesnej edycji na innym urządzeniu.

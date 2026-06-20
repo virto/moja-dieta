@@ -9,7 +9,10 @@ const EMPTY_DATA = {
   recipes: [],
   dietPlan: [],
   measurements: [],
-  shoppingList: []
+  shoppingList: [],
+  settings: {},
+  dayTemplates: [],
+  backups: []
 };
 
 function validData(value) {
@@ -34,7 +37,7 @@ async function readData() {
   if (!response.ok) throw new Error('Nie udało się odczytać pliku JSON.');
   const data = await response.json();
   if (!validData(data)) return EMPTY_DATA;
-  return { ...data, shoppingList: Array.isArray(data.shoppingList) ? data.shoppingList : [] };
+  return { ...data, shoppingList: Array.isArray(data.shoppingList) ? data.shoppingList : [], settings: data.settings || {}, dayTemplates: Array.isArray(data.dayTemplates)?data.dayTemplates:[], backups:Array.isArray(data.backups)?data.backups:[] };
 }
 
 export default async function handler(request, response) {
@@ -51,6 +54,8 @@ export default async function handler(request, response) {
         return response.status(400).json({ error: 'Nieprawidłowa struktura danych.' });
       }
 
+      const current = await readData();
+      if (body.expectedUpdatedAt && current.updatedAt && body.expectedUpdatedAt !== current.updatedAt) return response.status(409).json({ error: 'Dane zostały zmienione na innym urządzeniu.' });
       const saved = {
         version: Number(body.version) || 1,
         updatedAt: new Date().toISOString(),
@@ -58,7 +63,10 @@ export default async function handler(request, response) {
         recipes: body.recipes,
         dietPlan: body.dietPlan,
         measurements: body.measurements,
-        shoppingList: Array.isArray(body.shoppingList) ? body.shoppingList : []
+        shoppingList: Array.isArray(body.shoppingList) ? body.shoppingList : [],
+        settings: body.settings || {},
+        dayTemplates: Array.isArray(body.dayTemplates)?body.dayTemplates:[],
+        backups: Array.isArray(body.backups)?body.backups.slice(0,5):[]
       };
 
       await put(DATA_PATH, JSON.stringify(saved, null, 2), {

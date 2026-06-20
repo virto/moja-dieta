@@ -93,3 +93,7 @@ W zakładce Plan diety użyj przycisku **Skopiuj poprzedni dzień**, wybierz dzi
 - jasny/ciemny/systemowy wygląd,
 - 5 automatycznych kopii danych,
 - wykrywanie jednoczesnej edycji na innym urządzeniu.
+
+## Poprawka v15 – zapis danych
+
+Zapis nie nadpisuje już jednego publicznego pliku Blob. Każda operacja tworzy unikalną wersję JSON, a API pobiera najnowszą wersję. Eliminuje to fałszywe konflikty powodowane przez pamięć podręczną Vercel Blob. Aplikacja zachowuje maksymalnie 50 technicznych wersji pliku oraz nadal obsługuje starszy plik `diet-app/diet-data.json`.

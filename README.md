@@ -56,3 +56,6 @@ Zapis pliku `diet-app/diet-data.json` używa opcji `allowOverwrite: true`.
 - naprawiona wyszukiwarka produktów z widocznym tekstem i przyciskiem Wyczyść,
 - wyszukiwanie produktów podczas dodawania składników przepisu,
 - wyszukiwanie przepisów podczas dodawania posiłku do planu.
+
+## Jednostki domowe
+Produkty mają jednostkę bazową `g` lub `ml` oraz opcjonalne przeliczniki dla: sztuki, kromki, szklanki, łyżki, łyżeczki, garści, plastra i opakowania. W przepisie można wybrać tylko jednostki skonfigurowane dla danego produktu. Aplikacja przelicza je na g/ml do obliczeń wartości odżywczych i generowania koszyka.

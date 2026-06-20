@@ -138,14 +138,40 @@ function printableMealHtml(m,index){
   const r=recipeById(m.recipeId);if(!r)return '';
   const portions=Math.max(0.25,num(m.portions)||1),n=recipeNutrition(r);
   const ingredients=(r.ingredients||[]).map(i=>{const p=productById(i.productId),unit=i.unit||p?.baseUnit||'g';const amount=(i.amount!=null?num(i.amount):(ingredientBaseAmount(i,p)/unitFactor(p,unit)))*portions;const base=ingredientBaseAmount(i,p)*portions;const baseText=(unit!==p?.baseUnit&&p?.baseUnit)?` (${fmt(base)} ${esc(p.baseUnit)})`:'';return `<li>${esc(p?.name||'Nieznany produkt')} - ${fmt(amount)} ${esc(unit)}${baseText}</li>`}).join('');
-  return `<article class="pdf-meal"><div class="pdf-meal-top"><div><div class="pdf-time">${esc(m.time||'--:--')} Posiłek ${romanMealNumber(index)}</div><div class="pdf-date-small">${esc(pdfDateLabel(m.date))}</div></div><div class="pdf-nutrition"><b>WARTOŚCI<br>ODŻYWCZE:</b><span>Energia: ${fmt(n.kcal*portions)} kcal</span><span>Białko: ${fmt(n.protein*portions)} g</span><span>Tłuszcz: ${fmt(n.fat*portions)} g</span><span>Węglowodany: ${fmt(n.carbs*portions)} g</span></div></div><h2>${esc(r.name)}</h2>${portions!==1?`<div class="pdf-portions">Liczba porcji: ${fmt(portions)}</div>`:''}<h3>SKŁADNIKI:</h3><ul>${ingredients||'<li>Brak składników</li>'}</ul><h3>SPOSÓB PRZYGOTOWANIA:</h3><div class="pdf-instructions">${esc(r.instructions||'Brak opisu przygotowania.').replace(/\n/g,'<br>')}</div></article>`
+  return `<article class="pdf-meal"><div class="pdf-meal-top"><div><div class="pdf-time">${esc(m.time||'--:--')} <span class="pdf-meal-type">${esc(m.mealType||`Posiłek ${romanMealNumber(index)}`)}</span></div><div class="pdf-date-small">${esc(pdfDateLabel(m.date))}</div></div><div class="pdf-nutrition"><b>WARTOŚCI<br>ODŻYWCZE:</b><span>Energia: ${fmt(n.kcal*portions)} kcal</span><span>Białko: ${fmt(n.protein*portions)} g</span><span>Tłuszcz: ${fmt(n.fat*portions)} g</span><span>Węglowodany: ${fmt(n.carbs*portions)} g</span></div></div><h2>${esc(r.name)}</h2>${portions!==1?`<div class="pdf-portions">Liczba porcji: ${fmt(portions)}</div>`:''}<h3>SKŁADNIKI:</h3><ul>${ingredients||'<li>Brak składników</li>'}</ul><h3>SPOSÓB PRZYGOTOWANIA:</h3><div class="pdf-instructions">${esc(r.instructions||'Brak opisu przygotowania.').replace(/\n/g,'<br>')}</div></article>`
 }
 function buildPrintablePlan(from,to){
   const meals=[...state.data.dietPlan].filter(m=>(!from||m.date>=from)&&(!to||m.date<=to)).sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||''));
   const groups=meals.reduce((a,m)=>((a[m.date]??=[]).push(m),a),{});
   const days=Object.entries(groups).map(([date,items])=>`<section class="pdf-day"><header class="pdf-day-header"><strong>Moja Dieta - indywidualny plan żywieniowy</strong><span>${esc(pdfDateLabel(date))}</span></header><div class="pdf-meals pdf-cols-${Math.min(Math.max(items.length,1),4)}">${items.map((m,i)=>printableMealHtml(m,i)).join('')}</div><footer>Wygenerowano ${new Date().toLocaleDateString('pl-PL')}</footer></section>`).join('');
   return `<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Plan diety ${esc(from||'')} ${esc(to||'')}</title><style>
-  @page{size:A4 landscape;margin:8mm}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111;background:#eee}.print-toolbar{position:sticky;top:0;z-index:2;padding:10px;background:#1f6b49;color:white;display:flex;align-items:center;justify-content:space-between;gap:12px}.print-toolbar button{border:0;border-radius:8px;padding:9px 14px;font-weight:bold;cursor:pointer}.pdf-day{background:white;width:281mm;min-height:194mm;margin:10px auto;padding:3mm 2mm 7mm;position:relative;page-break-after:always}.pdf-day:last-child{page-break-after:auto}.pdf-day-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #aaa;padding:0 1mm 2mm;margin-bottom:3mm;font-size:8pt;color:#444}.pdf-meals{display:grid;gap:4mm;align-items:start}.pdf-cols-1{grid-template-columns:1fr}.pdf-cols-2{grid-template-columns:repeat(2,1fr)}.pdf-cols-3{grid-template-columns:repeat(3,1fr)}.pdf-cols-4{grid-template-columns:repeat(4,1fr)}.pdf-meal{min-width:0;padding:0 1mm;font-size:8.2pt;line-height:1.27;break-inside:avoid}.pdf-meal-top{display:grid;grid-template-columns:minmax(0,1fr) 28mm;gap:2mm;align-items:start}.pdf-time{font-size:10.5pt}.pdf-date-small{font-weight:bold;font-size:9pt;margin-top:1mm}.pdf-nutrition{font-size:6.8pt;line-height:1.22}.pdf-nutrition b,.pdf-nutrition span{display:block}.pdf-meal h2{font-size:11pt;line-height:1.12;margin:3mm 0 4mm}.pdf-portions{font-size:7pt;margin-top:-3mm;margin-bottom:3mm;color:#555}.pdf-meal h3{font-size:8.5pt;text-decoration:underline;margin:3mm 0 2mm}.pdf-meal ul{list-style:none;padding:0;margin:0}.pdf-meal li{margin:0 0 1mm}.pdf-instructions{white-space:normal}.pdf-day footer{position:absolute;bottom:2mm;left:3mm;font-size:6.5pt;color:#777}@media print{body{background:white}.print-toolbar{display:none}.pdf-day{margin:0;width:auto;min-height:0;padding-top:0}}
+  @page{size:A4 landscape;margin:8mm}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#171717;background:#eee;font-size:8pt;line-height:1.35}
+.print-toolbar{position:sticky;top:0;z-index:2;padding:10px 14px;background:#1f6b49;color:white;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:9pt}
+.print-toolbar button{border:0;border-radius:8px;padding:9px 14px;font-size:9pt;font-weight:700;cursor:pointer}
+.pdf-day{background:white;width:281mm;min-height:194mm;margin:10px auto;padding:3mm 2mm 7mm;position:relative;page-break-after:always}
+.pdf-day:last-child{page-break-after:auto}
+.pdf-day-header{display:flex;justify-content:space-between;align-items:center;border-bottom:.3mm solid #b8b8b8;padding:0 1mm 2mm;margin-bottom:3mm;color:#555;font-size:7.5pt;line-height:1.2}
+.pdf-day-header strong{font-size:8.5pt;color:#222}
+.pdf-meals{display:grid;gap:4mm;align-items:start}
+.pdf-cols-1{grid-template-columns:1fr}.pdf-cols-2{grid-template-columns:repeat(2,1fr)}.pdf-cols-3{grid-template-columns:repeat(3,1fr)}.pdf-cols-4{grid-template-columns:repeat(4,1fr)}
+.pdf-meal{min-width:0;padding:0 1mm;font-size:8pt;line-height:1.35;break-inside:avoid}
+.pdf-meal-top{display:grid;grid-template-columns:minmax(0,1fr) 30mm;gap:2.5mm;align-items:start}
+.pdf-time{font-size:10pt;font-weight:700;line-height:1.15}
+.pdf-meal-type{font-weight:700}
+.pdf-date-small{font-size:8.5pt;font-weight:700;line-height:1.2;margin-top:1mm}
+.pdf-nutrition{font-size:6.75pt;line-height:1.25;color:#333}
+.pdf-nutrition b{display:block;font-size:7pt;line-height:1.05;margin-bottom:.8mm;text-decoration:underline}
+.pdf-nutrition span{display:block}
+.pdf-meal h2{font-size:11pt;font-weight:700;line-height:1.16;margin:3mm 0 3.5mm}
+.pdf-portions{font-size:7pt;line-height:1.2;margin-top:-2.5mm;margin-bottom:2.5mm;color:#666}
+.pdf-meal h3{font-size:8.5pt;font-weight:700;line-height:1.15;text-decoration:underline;margin:3mm 0 1.6mm;letter-spacing:.01em}
+.pdf-meal ul{list-style:none;padding:0;margin:0;font-size:7.8pt;line-height:1.32}
+.pdf-meal li{margin:0 0 .9mm}
+.pdf-instructions{font-size:7.8pt;line-height:1.38;white-space:normal}
+.pdf-day footer{position:absolute;bottom:2mm;left:3mm;font-size:6.25pt;line-height:1;color:#777}
+@media print{body{background:white}.print-toolbar{display:none}.pdf-day{margin:0;width:auto;min-height:0;padding-top:0}}
   </style></head><body><div class="print-toolbar"><span>Podgląd planu diety</span><button onclick="window.print()">Zapisz jako PDF / Drukuj</button></div>${days||'<div style="padding:30px">Brak posiłków w wybranym zakresie dat.</div>'}</body></html>`
 }
 function openPrintablePlan(from,to){const w=window.open('','_blank');if(!w){toast('Przeglądarka zablokowała nowe okno');return}w.document.open();w.document.write(buildPrintablePlan(from,to));w.document.close();setTimeout(()=>{try{w.focus();w.print()}catch{}},500)}

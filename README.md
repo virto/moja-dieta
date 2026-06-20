@@ -102,3 +102,12 @@ Zapis nie nadpisuje już jednego publicznego pliku Blob. Każda operacja tworzy 
 ## Wersja 16 – usuwanie całego koszyka
 
 W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i informacją o liczbie usuwanych pozycji.
+
+
+## Wersja v17
+
+- rozbudowany widok tygodniowy z nawigacją, sumami dnia i szybkim dodawaniem/edycją,
+- kopiowanie dnia na wiele dat i poprzedniego tygodnia,
+- duplikowanie przepisów,
+- cofanie usunięcia przez 7 sekund,
+- koszyk pokazuje liczbę opakowań, nadwyżkę i szacowany koszt.

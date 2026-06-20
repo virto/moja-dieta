@@ -76,3 +76,7 @@ W formularzu dodawania posiłku godzina jest podpowiadana na podstawie typu: śn
 
 ## Eksport PDF
 W zakładce Plan lub Dane wybierz **Eksportuj PDF**. Wskaż zakres dat. Aplikacja otworzy poziomy podgląd A4: jeden dzień na stronę, posiłki w kolumnach. W oknie drukowania wybierz **Zapisz jako PDF**.
+
+
+## Kopiowanie poprzedniego dnia
+W zakładce Plan diety użyj przycisku **Skopiuj poprzedni dzień**, wybierz dzień docelowy, a aplikacja skopiuje wszystkie posiłki z dnia wcześniejszego wraz z godzinami, przepisami i liczbą porcji.

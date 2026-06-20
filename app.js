@@ -50,7 +50,7 @@ function renderProducts(){const q=(state.productSearch||'').trim().toLowerCase()
 function recipeDetailsHtml(r,multiplier=1){if(!r)return '';const portions=Math.max(0.25,num(multiplier)||1),n=recipeNutrition(r);const ingredients=(r.ingredients||[]).map(i=>{const p=productById(i.productId);const unit=i.unit||p?.baseUnit||'g';const amount=(i.amount!=null?num(i.amount):(ingredientBaseAmount(i,p)/unitFactor(p,unit)))*portions;return `<li><span>${esc(p?.name||'Nieznany produkt')}</span><strong>${fmt(amount)} ${esc(unit)}</strong></li>`}).join('');return `<details class="recipe-details"><summary>Pokaż szczegóły przepisu</summary><div class="recipe-details-content"><div class="recipe-nutrition"><span>${fmt(n.kcal*portions)} kcal</span><span>B ${fmt(n.protein*portions)} g</span><span>T ${fmt(n.fat*portions)} g</span><span>W ${fmt(n.carbs*portions)} g</span></div><div><h4>Składniki${portions!==1?` dla ${fmt(portions)} porcji`:''}</h4>${ingredients?`<ul class="ingredient-list">${ingredients}</ul>`:'<p>Brak składników.</p>'}</div><div><h4>Sposób przygotowania</h4><p class="instructions">${r.instructions?esc(r.instructions).replace(/\n/g,'<br>'):'Brak opisu przygotowania.'}</p></div></div></details>`}
 function renderRecipes(){const list=[...state.data.recipes].sort((a,b)=>a.name.localeCompare(b.name));$('#recipes').innerHTML=`${head('Przepisy','add-recipe')}<div class="list">${list.length?list.map(r=>{const n=recipeNutrition(r);return `<article class="item recipe-card"><div class="item-main"><span class="badge">${esc(r.mealType||'Inne')}</span><h3>${esc(r.name)}</h3><p>${fmt(n.kcal)} kcal · B ${fmt(n.protein)} g · T ${fmt(n.fat)} g · W ${fmt(n.carbs)} g</p><p>${(r.ingredients||[]).length} składników</p>${recipeDetailsHtml(r)}</div><div class="item-actions"><button class="icon-btn" data-edit-recipe="${r.id}">✎</button><button class="icon-btn danger" data-delete-recipe="${r.id}">×</button></div></article>`}).join(''):empty('Nie ma jeszcze przepisów.')}</div>`}
 function mealHtml(m){const r=recipeById(m.recipeId),portions=Math.max(0.25,num(m.portions)||1);return `<div class="item meal-card"><div class="item-main"><span class="badge">${esc(m.mealType||'Posiłek')}</span><h3>${esc(m.time||'')} ${esc(r?.name||m.customName||'Brak przepisu')}</h3><p class="meal-portions">${fmt(portions)} ${portions===1?'porcja':'porcje'}</p>${r?recipeDetailsHtml(r,portions):'<p>Przepis nie jest już dostępny.</p>'}</div><div class="item-actions"><button class="icon-btn" data-edit-meal="${m.id}">✎</button><button class="icon-btn danger" data-delete-meal="${m.id}">×</button></div></div>`}
-function renderPlan(){const list=[...state.data.dietPlan].sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||''));const groups=Object.groupBy?Object.groupBy(list,x=>x.date):list.reduce((a,x)=>((a[x.date]??=[]).push(x),a),{});$('#plan').innerHTML=`<div class="section-head"><h2>Plan diety</h2><div class="section-actions"><button class="secondary" data-action="export-pdf">Eksportuj PDF</button><button class="primary" data-action="add-meal">+ Dodaj</button></div></div><div class="list">${Object.keys(groups).length?Object.entries(groups).map(([date,items])=>`<div class="panel day-panel"><div class="day-heading"><h3>${new Date(date+'T12:00:00').toLocaleDateString('pl-PL',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</h3><span>${items.length} ${items.length===1?'posiłek':'posiłki'}</span></div>${daySummaryHtml(items)}${items.map(mealHtml).join('')}</div>`).join(''):empty('Plan diety jest pusty.')}</div>`}
+function renderPlan(){const list=[...state.data.dietPlan].sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||''));const groups=Object.groupBy?Object.groupBy(list,x=>x.date):list.reduce((a,x)=>((a[x.date]??=[]).push(x),a),{});$('#plan').innerHTML=`<div class="section-head"><h2>Plan diety</h2><div class="section-actions"><button class="secondary" data-action="copy-previous-day">Skopiuj poprzedni dzień</button><button class="secondary" data-action="export-pdf">Eksportuj PDF</button><button class="primary" data-action="add-meal">+ Dodaj</button></div></div><div class="list">${Object.keys(groups).length?Object.entries(groups).map(([date,items])=>`<div class="panel day-panel"><div class="day-heading"><h3>${new Date(date+'T12:00:00').toLocaleDateString('pl-PL',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</h3><span>${items.length} ${items.length===1?'posiłek':'posiłki'}</span></div>${daySummaryHtml(items)}${items.map(mealHtml).join('')}</div>`).join(''):empty('Plan diety jest pusty.')}</div>`}
 function shoppingGroups(){const items=[...(state.data.shoppingList||[])].sort((a,b)=>(a.purchased-b.purchased)||(a.category||'Inne').localeCompare(b.category||'Inne')||a.name.localeCompare(b.name));return items.reduce((g,x)=>((g[x.category||'Inne']??=[]).push(x),g),{})}
 function renderShopping(){const items=state.data.shoppingList||[];const groups=shoppingGroups();const bought=items.filter(x=>x.purchased).length;const today=new Date().toISOString().slice(0,10);const end=new Date(Date.now()+6*86400000).toISOString().slice(0,10);$('#shopping').innerHTML=`${head('Koszyk zakupowy','add-shopping','Dodaj pozycję')}<div class="panel shopping-generator"><h3>Generuj z planu diety</h3><div class="form-grid"><label>Od daty<input id="shoppingFrom" type="date" value="${today}"></label><label>Do daty<input id="shoppingTo" type="date" value="${end}"></label></div><div class="form-actions"><button class="secondary" data-action="clear-purchased">Usuń kupione</button><button class="primary" data-action="generate-shopping">Generuj listę</button></div></div><div class="shopping-summary"><span>${items.length} pozycji</span><span>${bought} kupionych</span><span>${items.length-bought} do kupienia</span></div><div class="shopping-sections">${Object.keys(groups).length?Object.entries(groups).map(([cat,list])=>`<section class="panel shopping-category"><h3>${esc(cat)}</h3><div class="shopping-table">${list.map(x=>`<div class="shopping-row ${x.purchased?'purchased':''}"><label class="shopping-check"><input type="checkbox" data-toggle-shopping="${x.id}" ${x.purchased?'checked':''}><span></span></label><div class="shopping-name"><strong>${esc(x.name)}</strong><small>${fmt(x.amount)} ${esc(x.unit||'g')}${x.source==='plan'?' · z planu':''}</small></div><div class="item-actions"><button class="icon-btn" data-edit-shopping="${x.id}">✎</button><button class="icon-btn danger" data-delete-shopping="${x.id}">×</button></div></div>`).join('')}</div></section>`).join(''):empty('Koszyk jest pusty. Wygeneruj listę z planu albo dodaj pozycję ręcznie.')}</div>`}
 function generateShopping(){const from=$('#shoppingFrom')?.value,to=$('#shoppingTo')?.value;if(!from||!to)return toast('Wybierz zakres dat');if(from>to)return toast('Data początkowa jest późniejsza niż końcowa');const totals=new Map();state.data.dietPlan.filter(m=>m.date>=from&&m.date<=to).forEach(m=>{const r=recipeById(m.recipeId);(r?.ingredients||[]).forEach(i=>{const p=productById(i.productId);if(!p)return;const key=p.id;const prev=totals.get(key)||{id:uid(),productId:p.id,name:p.name,amount:0,unit:'g',category:normalizeCategory(p.category,p.name),purchased:false,source:'plan'};prev.amount+=ingredientBaseAmount(i,p)*Math.max(0.25,num(m.portions)||1);prev.unit=p.baseUnit||'g';totals.set(key,prev)})});const manual=(state.data.shoppingList||[]).filter(x=>x.source!=='plan');state.data.shoppingList=[...manual,...totals.values()];save()}
@@ -103,6 +103,7 @@ async function importExcel(file){
 const actions={
 'add-product':()=>productForm(), 'add-recipe':()=>recipeForm(), 'add-meal':()=>mealForm(), 'add-shopping':()=>shoppingForm(), 'add-measurement':()=>measurementForm(),
 'export-pdf':()=>pdfExportForm(),
+'copy-previous-day':()=>copyPreviousDayForm(),
 'generate-shopping':()=>generateShopping(), 'clear-purchased':async()=>{state.data.shoppingList=(state.data.shoppingList||[]).filter(x=>!x.purchased);await save()},
 'export-excel':()=>exportExcel(),
 'export-json':()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state.data,null,2)],{type:'application/json'}));a.download=`moja-dieta-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href)},
@@ -130,6 +131,38 @@ function mealForm(m){
   $('#recipeSearch').oninput=fill;
   updateSuggestedTime();
   fill()
+}
+
+
+function shiftIsoDate(date,days){
+  const d=new Date(date+'T12:00:00');
+  d.setDate(d.getDate()+days);
+  return d.toISOString().slice(0,10)
+}
+function suggestedCopyTargetDate(){
+  const dates=(state.data.dietPlan||[]).map(x=>x.date).filter(Boolean).sort();
+  return dates.length?shiftIsoDate(dates[dates.length-1],1):new Date().toISOString().slice(0,10)
+}
+function copyPreviousDayForm(){
+  const target=suggestedCopyTargetDate();
+  openModal('Skopiuj poprzedni dzień',`<div class="form-grid"><label class="full">Dzień docelowy<input name="targetDate" id="copyTargetDate" type="date" required value="${target}"></label><div class="full panel copy-day-info"><p id="copyDayInfo"></p><p class="hint">Skopiowane zostaną godziny, typy posiłków, przepisy i liczba porcji. Jeżeli dzień docelowy zawiera już posiłki, możesz je zastąpić.</p></div></div><div class="form-actions"><button type="button" class="secondary" data-close>Anuluj</button><button class="primary">Skopiuj</button></div>`,async fd=>{
+    const targetDate=fd.get('targetDate');
+    const sourceDate=shiftIsoDate(targetDate,-1);
+    const sourceMeals=(state.data.dietPlan||[]).filter(x=>x.date===sourceDate);
+    if(!sourceMeals.length){toast('Poprzedni dzień nie zawiera posiłków');return}
+    const existing=(state.data.dietPlan||[]).filter(x=>x.date===targetDate);
+    if(existing.length&&!confirm(`Dzień ${targetDate} zawiera już ${existing.length} pozycji. Zastąpić je posiłkami z ${sourceDate}?`))return;
+    state.data.dietPlan=(state.data.dietPlan||[]).filter(x=>x.date!==targetDate);
+    state.data.dietPlan.push(...sourceMeals.map(m=>({
+      id:uid(),date:targetDate,time:m.time||'',mealType:m.mealType||'Inne',recipeId:m.recipeId,portions:Math.max(0.25,num(m.portions)||1)
+    })));
+    closeModal();
+    await save();
+    toast(`Skopiowano ${sourceMeals.length} posiłków z ${sourceDate}`)
+  });
+  const updateInfo=()=>{const targetDate=$('#copyTargetDate').value,sourceDate=targetDate?shiftIsoDate(targetDate,-1):'',count=(state.data.dietPlan||[]).filter(x=>x.date===sourceDate).length;$('#copyDayInfo').innerHTML=targetDate?`Źródło: <strong>${esc(sourceDate)}</strong> · ${count} ${count===1?'posiłek':'posiłków'}`:''};
+  $('#copyTargetDate').oninput=updateInfo;
+  updateInfo()
 }
 
 function pdfDateLabel(date){return new Date(date+'T12:00:00').toLocaleDateString('pl-PL',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'})}

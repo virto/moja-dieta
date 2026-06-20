@@ -22,3 +22,5 @@
 @media(max-width:700px){.searchable-select{grid-template-columns:1fr;width:100%}.ingredient-picker{align-items:stretch}.ingredient-amount{width:100%}.search-toolbar input{max-width:none;flex:1 1 100%}}
 
 .meal-portions{margin:.25rem 0 .5rem;color:var(--muted,#667085);font-size:.92rem;font-weight:600}
+
+.section-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pdf-export-note{box-shadow:none;background:#f7faf8}.pdf-export-note p{margin:6px 0 0;color:#65736a;font-weight:400}@media(max-width:520px){.section-head{align-items:flex-start}.section-actions{width:100%;justify-content:flex-start}.section-head{flex-wrap:wrap}}

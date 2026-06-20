@@ -72,3 +72,7 @@ Podczas dodawania lub edycji posiłku można ustawić liczbę porcji (np. 0,5; 1
 ## Sugerowane godziny posiłków
 
 W formularzu dodawania posiłku godzina jest podpowiadana na podstawie typu: śniadanie 08:00, II śniadanie 11:00, obiad 15:00, podwieczorek 17:30, kolacja 20:00, przekąska 13:00, inne 12:00. Godzinę można zawsze zmienić ręcznie. Podczas edycji istniejącego posiłku jego zapisana godzina pozostaje bez zmian.
+
+
+## Eksport PDF
+W zakładce Plan lub Dane wybierz **Eksportuj PDF**. Wskaż zakres dat. Aplikacja otworzy poziomy podgląd A4: jeden dzień na stronę, posiłki w kolumnach. W oknie drukowania wybierz **Zapisz jako PDF**.

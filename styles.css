@@ -46,3 +46,15 @@
 .toast button{border:0;border-radius:8px;background:#fff;color:#17211b;padding:7px 11px;font-weight:800;cursor:pointer}
 :root[data-theme="dark"] .week-meal,:root[data-theme="dark"] .weekly-table tfoot th,:root[data-theme="dark"] .weekly-table tfoot td{background:#213128}
 @media(max-width:700px){.week-nav{justify-content:flex-start}.week-nav strong{order:-1;width:100%;text-align:left}.weekly-table{min-width:1050px}}
+
+/* Usuwanie posiłków i całych dni w widoku tygodniowym */
+.week-day-head{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.week-day-head>span{min-width:0}
+.week-delete-day{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--danger);cursor:pointer;font-size:.9rem;line-height:1}
+.week-delete-day:hover{background:#fff0f0;outline:1px solid #efb6b6}
+.week-meal-entry{position:relative;margin-bottom:6px;padding-right:28px}
+.week-meal-entry .week-meal{margin-bottom:0}
+.week-delete-meal{position:absolute;right:0;top:0;display:flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;border:0;border-radius:7px;background:#fff0f0;color:#b42318;font-size:1rem;font-weight:800;line-height:1;cursor:pointer}
+.week-delete-meal:hover{background:#ffd9d6;outline:1px solid #e6a19b}
+:root[data-theme="dark"] .week-delete-day:hover,:root[data-theme="dark"] .week-delete-meal{background:#4a2424;color:#ffb4ae}
+:root[data-theme="dark"] .week-delete-meal:hover{background:#62302f}

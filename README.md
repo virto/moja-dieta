@@ -111,3 +111,9 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - duplikowanie przepisów,
 - cofanie usunięcia przez 7 sekund,
 - koszyk pokazuje liczbę opakowań, nadwyżkę i szacowany koszt.
+
+## Wersja v18
+- usuwanie pojedynczych posiłków bezpośrednio w widoku tygodniowym,
+- usuwanie wszystkich posiłków z wybranego dnia,
+- potwierdzenie przed usunięciem całego dnia,
+- możliwość cofnięcia obu operacji przez 7 sekund.

@@ -117,3 +117,7 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - usuwanie wszystkich posiłków z wybranego dnia,
 - potwierdzenie przed usunięciem całego dnia,
 - możliwość cofnięcia obu operacji przez 7 sekund.
+
+
+## Wersja v19
+- Naprawiono utratę focusu w wyszukiwarce przepisów podczas wpisywania kolejnych znaków.

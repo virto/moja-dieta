@@ -130,3 +130,11 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - menu akcji zamiast wielu ikon
 - własne dialogi dla najważniejszych operacji
 - uporządkowana sekcja Ustawienia
+
+
+## Wersja v21 — naprawa uruchamiania
+
+- przywrócono funkcje openModal i closeModal,
+- przywrócono renderowanie Produktów, Przepisów, Planu, Koszyka, Pomiarów i Ustawień,
+- naprawiono zatrzymanie aplikacji na komunikacie „Łączenie z plikiem online…”,
+- cache PWA: moja-dieta-v21.

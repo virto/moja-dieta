@@ -156,3 +156,8 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - komunikaty statusu z `aria-live`,
 - ulepszone stany puste z jasnym kolejnym krokiem,
 - wsparcie `prefers-reduced-motion`.
+
+## Wersja v24 – poprawka formularza pomiarów
+- reset stanu formularza przepisu przy każdym otwarciu modala,
+- ostrzeżenie o niezapisanym szkicu działa wyłącznie w formularzu przepisu,
+- zapis pomiaru zawierającego tylko masę ciała działa prawidłowo.

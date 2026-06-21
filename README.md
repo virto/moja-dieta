@@ -138,3 +138,10 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - przywrócono renderowanie Produktów, Przepisów, Planu, Koszyka, Pomiarów i Ustawień,
 - naprawiono zatrzymanie aplikacji na komunikacie „Łączenie z plikiem online…”,
 - cache PWA: moja-dieta-v21.
+
+## Wersja v22 — UI/UX priorytet 2
+- wieloetapowy formularz przepisu,
+- uproszczone wiersze składników i bieżące przeliczenia,
+- automatyczny lokalny zapis szkicu,
+- ostrzeżenie przed zamknięciem niezapisanej edycji,
+- walidacja z komunikatami bezpośrednio przy polach.

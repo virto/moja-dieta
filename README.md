@@ -145,3 +145,14 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - automatyczny lokalny zapis szkicu,
 - ostrzeżenie przed zamknięciem niezapisanej edycji,
 - walidacja z komunikatami bezpośrednio przy polach.
+
+## Wersja v23 – UI/UX priorytet 3
+
+- spójna skala typografii i rytm odstępów,
+- większe pola i przyciski dotykowe (minimum 44 px),
+- ujednolicone ikony edycji i usuwania z etykietami dostępności,
+- poprawiony kontrast tekstów i stanów ostrzegawczych,
+- wyraźny focus klawiatury oraz link „Przejdź do treści”,
+- komunikaty statusu z `aria-live`,
+- ulepszone stany puste z jasnym kolejnym krokiem,
+- wsparcie `prefers-reduced-motion`.

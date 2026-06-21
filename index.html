@@ -28,7 +28,7 @@
     <button data-view="plan">Plan</button>
     <button data-view="shopping">Koszyk</button>
     <button data-view="measurements">Pomiary</button>
-    <button data-view="settings">Dane</button>
+    <button data-view="settings">Ustawienia</button>
   </nav>
 
   <main>
@@ -40,6 +40,27 @@
     <section id="measurements" class="view"></section>
     <section id="settings" class="view"></section>
   </main>
+
+
+  <nav class="mobile-nav" aria-label="Nawigacja mobilna">
+    <button data-view="dashboard" class="active"><span>⌂</span><b>Start</b></button>
+    <button data-view="plan"><span>▦</span><b>Plan</b></button>
+    <button class="mobile-add" data-action="add-meal" aria-label="Dodaj posiłek"><span>＋</span></button>
+    <button data-view="recipes"><span>▤</span><b>Przepisy</b></button>
+    <button data-action="open-more"><span>•••</span><b>Więcej</b></button>
+  </nav>
+
+  <div id="moreSheet" class="more-sheet hidden" aria-hidden="true">
+    <div class="more-sheet-card">
+      <div class="more-sheet-head"><h2>Więcej</h2><button type="button" class="icon-btn" data-action="close-more" aria-label="Zamknij">×</button></div>
+      <div class="more-grid">
+        <button data-nav="products">Produkty</button>
+        <button data-nav="shopping">Zakupy</button>
+        <button data-nav="measurements">Pomiary</button>
+        <button data-nav="settings">Ustawienia</button>
+      </div>
+    </div>
+  </div>
 
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
     <div class="modal-card">

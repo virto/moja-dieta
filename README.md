@@ -121,3 +121,12 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 
 ## Wersja v19
 - Naprawiono utratę focusu w wyszukiwarce przepisów podczas wpisywania kolejnych znaków.
+
+
+## Wersja v20 — przebudowa UI/UX
+- dolna nawigacja mobilna i panel Więcej
+- nowy ekran Start skoncentrowany na dzisiejszym planie
+- pionowy widok tygodnia na telefonie
+- menu akcji zamiast wielu ikon
+- własne dialogi dla najważniejszych operacji
+- uporządkowana sekcja Ustawienia

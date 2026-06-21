@@ -161,3 +161,14 @@ W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i i
 - reset stanu formularza przepisu przy każdym otwarciu modala,
 - ostrzeżenie o niezapisanym szkicu działa wyłącznie w formularzu przepisu,
 - zapis pomiaru zawierającego tylko masę ciała działa prawidłowo.
+
+
+## Wersja v25 – planowanie i postępy
+
+Dodano:
+- dopasowanie liczby porcji do kalorii pozostałych w danym dniu,
+- szybkie zakresy generowania koszyka: dziś, 3, 7 i 14 dni,
+- planowanie jednego przepisu na kilka kolejnych dni,
+- statystyki użycia i datę ostatniego użycia przepisu,
+- kolekcje przepisów z filtrowaniem oraz obsługą Excel,
+- rozszerzony widok postępów z zakresami dat, tempem zmian i średnią 7-dniową.

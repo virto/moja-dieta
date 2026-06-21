@@ -194,3 +194,17 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
   .ingredient-main{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* v25: etap 1 */
+.recipe-toolbar{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:10px}
+.recipe-meta-line,.usage-stats,.range-presets,.portion-tools,.chart-legend{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badge.subtle{background:var(--surface-2,#eef3ef);color:var(--text,#25332b)}
+.usage-stats{font-size:.88rem;color:var(--muted);margin:.45rem 0}
+.portion-tools{grid-column:1/-1}.portion-tools button{flex:1}
+.range-presets{margin:12px 0}.range-presets button{min-width:72px}
+.progress-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.progress-summary>div{padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2,#f6f8f6)}
+.progress-summary span{display:block;font-size:.8rem;color:var(--muted)}
+.progress-summary strong{display:block;font-size:1.1rem;margin-top:3px}
+.chart-legend{font-size:.82rem;color:var(--muted);justify-content:center}
+@media(max-width:720px){.recipe-toolbar{grid-template-columns:1fr}.progress-summary{grid-template-columns:repeat(2,1fr)}.portion-tools{flex-direction:column}.portion-tools button{width:100%}}

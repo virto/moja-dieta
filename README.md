@@ -172,3 +172,14 @@ Dodano:
 - statystyki użycia i datę ostatniego użycia przepisu,
 - kolekcje przepisów z filtrowaniem oraz obsługą Excel,
 - rozszerzony widok postępów z zakresami dat, tempem zmian i średnią 7-dniową.
+
+## Planowanie posiłków v26
+
+- szybkie dodawanie posiłku z listą polecanych, ostatnich i ulubionych przepisów,
+- kopiowanie pojedynczego posiłku na wiele dat,
+- cykliczne powtarzanie codziennie, co 2 dni lub w wybrane dni tygodnia,
+- wysuwany panel szczegółów dnia i posiłku,
+- podgląd kalorii oraz makroskładników przed zapisem,
+- status kompletności każdego dnia,
+- mobilny widok pojedynczego dnia z nawigacją poprzedni/następny,
+- przenoszenie posiłku na inną datę, godzinę i typ.

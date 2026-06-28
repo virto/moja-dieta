@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#256d4a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Moja Dieta">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Moja Dieta</title>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Przejdź do treści</a>
+  <header class="topbar">
+    <div><h1>Moja Dieta</h1><p id="syncStatus" role="status" aria-live="polite">Łączenie z plikiem online…</p></div>
+    <div class="top-actions">
+      <button id="installBtn" class="ghost hidden">Zainstaluj</button>
+      <button id="syncBtn" class="ghost">Odśwież</button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Główne sekcje">
+    <button data-view="dashboard" class="active">Start</button>
+    <button data-view="products">Produkty</button>
+    <button data-view="recipes">Przepisy</button>
+    <button data-view="plan">Plan</button>
+    <button data-view="shopping">Koszyk</button>
+    <button data-view="measurements">Pomiary</button>
+    <button data-view="settings">Ustawienia</button>
+  </nav>
+
+  <main id="mainContent" tabindex="-1">
+    <section id="dashboard" class="view active"></section>
+    <section id="products" class="view"></section>
+    <section id="recipes" class="view"></section>
+    <section id="plan" class="view"></section>
+    <section id="shopping" class="view"></section>
+    <section id="measurements" class="view"></section>
+    <section id="settings" class="view"></section>
+  </main>
+
+
+  <nav class="mobile-nav" aria-label="Nawigacja mobilna">
+    <button data-view="dashboard" class="active"><span>⌂</span><b>Start</b></button>
+    <button data-view="plan"><span>▦</span><b>Plan</b></button>
+    <button class="mobile-add" data-action="add-meal" aria-label="Dodaj posiłek"><span>＋</span></button>
+    <button data-view="recipes"><span>▤</span><b>Przepisy</b></button>
+    <button data-action="open-more"><span>•••</span><b>Więcej</b></button>
+  </nav>
+
+  <div id="moreSheet" class="more-sheet hidden" aria-hidden="true">
+    <div class="more-sheet-card">
+      <div class="more-sheet-head"><h2>Więcej</h2><button type="button" class="icon-btn" data-action="close-more" aria-label="Zamknij">×</button></div>
+      <div class="more-grid">
+        <button data-nav="products">Produkty</button>
+        <button data-nav="shopping">Zakupy</button>
+        <button data-nav="measurements">Pomiary</button>
+        <button data-nav="settings">Ustawienia</button>
+      </div>
+    </div>
+  </div>
+
+
+  <aside id="planningPanel" class="planning-panel hidden" aria-hidden="true" aria-label="Szczegóły planowania"></aside>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="modalTitle"></h2><button id="modalClose" class="icon-btn" aria-label="Zamknij">×</button></div>
+      <form id="modalForm"></form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script async src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

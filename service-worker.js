@@ -1,6 +1,6 @@
 {
   "name": "moja-dieta-pwa",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "type": "module",
   "engines": {

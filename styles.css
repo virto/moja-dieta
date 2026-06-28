@@ -1,280 +1,192 @@
-:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#17211b;background:#f4f7f4;--green:#256d4a;--green2:#e8f3ed;--line:#dce5df;--danger:#a62929}*{box-sizing:border-box}body{margin:0;min-height:100vh}.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px max(16px,calc((100vw - 1180px)/2));background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}h1{font-size:1.3rem;margin:0}.topbar p{font-size:.78rem;margin:3px 0 0;color:#617067}.top-actions{display:flex;gap:8px}.tabs{position:sticky;top:69px;z-index:19;display:flex;gap:6px;padding:10px max(12px,calc((100vw - 1180px)/2));overflow-x:auto;background:#fff;border-bottom:1px solid var(--line)}button{font:inherit;border:0;cursor:pointer}.tabs button,.ghost,.secondary{padding:10px 13px;border-radius:10px;background:#f0f4f1;color:#34463b;white-space:nowrap}.tabs button.active,.primary{background:var(--green);color:#fff}main{max-width:1180px;margin:auto;padding:20px 16px 90px}.view{display:none}.view.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.section-head h2{margin:0;font-size:1.35rem}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 5px 20px rgba(30,60,40,.04)}.stat strong{display:block;font-size:1.65rem;color:var(--green)}.stat span{color:#66746b;font-size:.88rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.list{display:grid;gap:10px}.item{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.item h3{margin:0 0 4px;font-size:1rem}.item p{margin:2px 0;color:#65736a;font-size:.88rem}.item-actions{display:flex;gap:6px;flex-shrink:0}.icon-btn{width:38px;height:38px;border-radius:10px;background:#edf2ee;font-size:1.2rem}.danger{color:var(--danger)}.empty{text-align:center;padding:30px;color:#718078;background:#fff;border:1px dashed #cbd7cf;border-radius:14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar input,.toolbar select{max-width:340px}.primary,.secondary,.danger-btn{padding:11px 15px;border-radius:10px;font-weight:650}.danger-btn{background:#fae9e9;color:#8d2424}input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cbd7cf;border-radius:10px;background:#fff;font:inherit}textarea{min-height:100px;resize:vertical}label{display:grid;gap:6px;font-size:.88rem;font-weight:600}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.full{grid-column:1/-1}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.modal{position:fixed;inset:0;z-index:50;background:rgba(20,30,24,.55);display:grid;place-items:center;padding:14px}.modal.hidden,.hidden{display:none!important}.modal-card{width:min(820px,100%);max-height:calc(100dvh - 28px);overflow:auto;background:#fff;border-radius:18px;padding:18px}.modal-head{position:sticky;top:-18px;background:#fff;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 0 12px;border-bottom:1px solid var(--line);margin-bottom:14px}.modal-head h2{margin:0;font-size:1.25rem}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:80;background:#17211b;color:#fff;padding:11px 16px;border-radius:11px;box-shadow:0 8px 30px #0003}.meal-card{border-left:4px solid var(--green)}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--green2);color:var(--green);font-size:.75rem;font-weight:700}.ingredients{margin:8px 0;padding-left:18px;color:#58675e}.settings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.file-label{display:inline-flex;align-items:center;padding:11px 15px;border-radius:10px;background:#edf2ee;cursor:pointer;font-weight:650}.file-label input{display:none}@media(max-width:800px){.cards{grid-template-columns:repeat(2,1fr)}.grid,.settings-grid{grid-template-columns:1fr}.topbar{padding:11px 12px}.tabs{top:62px}.topbar h1{font-size:1.15rem}.ghost{padding:9px 10px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.item{flex-direction:column}.item-actions{width:100%;justify-content:flex-end}}@media(max-width:430px){main{padding:14px 10px 90px}.cards{grid-template-columns:1fr 1fr;gap:8px}.card{padding:12px}.stat strong{font-size:1.35rem}.tabs button{padding:9px 11px}.topbar p{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.modal{padding:0;align-items:end}.modal-card{width:100%;max-height:94dvh;border-radius:18px 18px 0 0;padding:16px}.modal-head{top:-16px}}
-.shopping-generator{margin-bottom:14px}.shopping-summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.shopping-summary span{background:var(--green2);color:var(--green);padding:7px 10px;border-radius:999px;font-size:.82rem;font-weight:700}.shopping-sections{display:grid;gap:14px}.shopping-category h3{margin-top:0}.shopping-table{display:grid;gap:8px}.shopping-row{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px}.shopping-row.purchased{opacity:.55;background:#f3f5f3}.shopping-row.purchased strong{text-decoration:line-through}.shopping-check{display:flex;place-items:center}.shopping-check input{width:22px;height:22px}.shopping-name{display:grid;gap:3px}.shopping-name small{color:#65736a}
+# Moja Dieta — PWA na Vercel z plikiem JSON
 
-/* Rozwijane szczegóły przepisów */
-.item-main{min-width:0;flex:1}
-.recipe-details{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
-.recipe-details summary{cursor:pointer;font-weight:700;color:var(--green);list-style:none;display:inline-flex;align-items:center;gap:6px}
-.recipe-details summary::-webkit-details-marker{display:none}
-.recipe-details summary::before{content:'▸';transition:transform .2s ease}
-.recipe-details[open] summary::before{transform:rotate(90deg)}
-.recipe-details-content{margin-top:12px;display:grid;gap:14px}
-.recipe-details-content h4{margin:0 0 6px;font-size:.95rem}
-.recipe-nutrition{display:flex;flex-wrap:wrap;gap:8px}
-.recipe-nutrition span{background:#f3f4f6;border-radius:999px;padding:5px 9px;font-size:.85rem}
-.ingredient-list{list-style:none;padding:0;margin:0;display:grid;gap:6px}
-.ingredient-list li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:5px}
-.instructions{margin:0;line-height:1.55;white-space:normal}
-@media(max-width:700px){.recipe-card,.meal-card{align-items:flex-start}.recipe-details{width:100%}.ingredient-list li{gap:8px}}
+Aplikacja nie używa bazy danych ani logowania. Wszystkie informacje są przechowywane w jednym pliku `diet-app/diet-data.json` w Vercel Blob.
 
-.day-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0 16px}.day-summary>div{background:var(--soft,#f4f7f5);border:1px solid var(--border,#dfe7e2);border-radius:12px;padding:10px;text-align:center}.day-summary strong{display:block;font-size:1.05rem}.day-summary span{display:block;margin-top:2px;font-size:.78rem;color:var(--muted,#66736b)}.day-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.day-heading h3{margin:0}.day-heading>span{font-size:.85rem;color:var(--muted,#66736b);white-space:nowrap}@media(max-width:620px){.day-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.day-heading{align-items:flex-start;flex-direction:column;gap:4px}}
-.search-toolbar{align-items:center}.search-toolbar input{min-width:min(100%,420px);color:#17211b}.search-result-info{margin:-6px 0 12px;color:#65736a;font-size:.86rem}.searchable-select{display:grid;grid-template-columns:minmax(180px,1fr) minmax(220px,1.3fr);gap:10px;flex:1}.ingredient-picker{align-items:end}.ingredient-amount{width:130px}.field-help{display:block;margin-top:5px;color:#65736a;font-weight:400}.ingredient-product-search,#recipeSearch,#productSearch{color:#17211b;background:#fff;caret-color:#17211b}
-@media(max-width:700px){.searchable-select{grid-template-columns:1fr;width:100%}.ingredient-picker{align-items:stretch}.ingredient-amount{width:100%}.search-toolbar input{max-width:none;flex:1 1 100%}}
+## Publikacja
 
-.meal-portions{margin:.25rem 0 .5rem;color:var(--muted,#667085);font-size:.92rem;font-weight:600}
+1. Rozpakuj projekt i umieść go w repozytorium GitHub.
+2. W Vercel wybierz **Add New → Project** i zaimportuj repozytorium.
+3. W projekcie Vercel otwórz **Storage**, utwórz **Blob store** i połącz go z projektem.
+4. Vercel automatycznie doda zmienną `BLOB_READ_WRITE_TOKEN`.
+5. Wykonaj ponowne wdrożenie: **Deployments → Redeploy**.
+6. Otwórz adres aplikacji. Pierwszy zapis utworzy plik JSON.
 
-.section-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pdf-export-note{box-shadow:none;background:#f7faf8}.pdf-export-note p{margin:6px 0 0;color:#65736a;font-weight:400}@media(max-width:520px){.section-head{align-items:flex-start}.section-actions{width:100%;justify-content:flex-start}.section-head{flex-wrap:wrap}}
-.goal-bars{display:grid;gap:8px;margin:8px 0 16px}.goal-row{display:grid;gap:5px}.goal-row>div{display:flex;justify-content:space-between;gap:12px;font-size:.82rem}.goal-row progress{width:100%;height:10px;accent-color:var(--green)}.warnings{display:grid;gap:6px;margin:10px 0}.warnings>div{padding:9px 11px;border-radius:10px;background:#fff4dd;color:#7a5200;font-size:.85rem}.weight-chart{width:100%;max-height:220px;color:var(--green);background:var(--green2);border-radius:12px}.weight-chart circle{fill:currentColor}.weekly-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px}.weekly-table{width:100%;min-width:900px;border-collapse:collapse}.weekly-table th,.weekly-table td{border:1px solid var(--line);padding:9px;vertical-align:top}.weekly-table thead th{position:sticky;top:0;background:var(--green2)}.week-meal{padding:7px;border-radius:8px;background:#f4f7f4;margin-bottom:5px;font-size:.8rem}.week-meal small{display:block;color:#66746b;margin-top:3px}.quick-actions h3{margin-top:0}
-:root[data-theme="dark"]{color:#e8f0eb;background:#101713;--green:#4caf7c;--green2:#173526;--line:#314239;--danger:#ff8d8d}:root[data-theme="dark"] body,:root[data-theme="dark"] .tabs,:root[data-theme="dark"] .topbar,:root[data-theme="dark"] .modal-card,:root[data-theme="dark"] .modal-head,:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea,:root[data-theme="dark"] .card,:root[data-theme="dark"] .panel,:root[data-theme="dark"] .item,:root[data-theme="dark"] .empty,:root[data-theme="dark"] .weekly-wrap{background:#151f19;color:#e8f0eb}:root[data-theme="dark"] .tabs button,:root[data-theme="dark"] .ghost,:root[data-theme="dark"] .secondary,:root[data-theme="dark"] .icon-btn,:root[data-theme="dark"] .file-label{background:#26352c;color:#e8f0eb}:root[data-theme="dark"] .week-meal{background:#213128}:root[data-theme="dark"] .warnings>div{background:#4c3a12;color:#ffe7a7}
-@media(prefers-color-scheme:dark){:root[data-theme="system"]{color:#e8f0eb;background:#101713;--green:#4caf7c;--green2:#173526;--line:#314239;--danger:#ff8d8d}:root[data-theme="system"] body,:root[data-theme="system"] .tabs,:root[data-theme="system"] .topbar,:root[data-theme="system"] .modal-card,:root[data-theme="system"] .modal-head,:root[data-theme="system"] input,:root[data-theme="system"] select,:root[data-theme="system"] textarea,:root[data-theme="system"] .card,:root[data-theme="system"] .panel,:root[data-theme="system"] .item,:root[data-theme="system"] .empty,:root[data-theme="system"] .weekly-wrap{background:#151f19;color:#e8f0eb}}
+## Instalacja na telefonie
 
-/* v17: plan tygodniowy, cofanie i opakowania */
-.week-nav{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.week-nav strong{min-width:170px;text-align:center}
-.weekly-table thead th span,.weekly-table thead th small{display:block}
-.weekly-table thead th small{margin-top:4px;color:#66736b;font-weight:500}
-.weekly-table td{min-width:145px}
-.week-meal{display:block;width:100%;border:0;text-align:left;padding:8px;border-radius:9px;background:#f4f7f4;margin-bottom:6px;color:inherit;cursor:pointer}
-.week-meal:hover{outline:2px solid var(--green)}
-.week-meal strong{display:block;font-size:.8rem;line-height:1.25}
-.week-meal small,.weekly-table tfoot small{display:block;color:#66746b;margin-top:4px;font-size:.72rem}
-.week-add{width:100%;min-height:30px;border:1px dashed #b9c8be;border-radius:8px;background:transparent;color:var(--green);font-weight:800;cursor:pointer}
-.week-add:hover{background:var(--green2)}
-.weekly-table tfoot th,.weekly-table tfoot td{background:#f8faf8}
-.package-info{color:var(--green)!important;font-weight:700}
-.toast{display:flex;align-items:center;gap:12px;max-width:min(92vw,620px)}
-.toast button{border:0;border-radius:8px;background:#fff;color:#17211b;padding:7px 11px;font-weight:800;cursor:pointer}
-:root[data-theme="dark"] .week-meal,:root[data-theme="dark"] .weekly-table tfoot th,:root[data-theme="dark"] .weekly-table tfoot td{background:#213128}
-@media(max-width:700px){.week-nav{justify-content:flex-start}.week-nav strong{order:-1;width:100%;text-align:left}.weekly-table{min-width:1050px}}
+- Android/Chrome: menu → **Zainstaluj aplikację** lub **Dodaj do ekranu głównego**.
+- iPhone/Safari: Udostępnij → **Do ekranu początkowego**.
 
-/* Usuwanie posiłków i całych dni w widoku tygodniowym */
-.week-day-head{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.week-day-head>span{min-width:0}
-.week-delete-day{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--danger);cursor:pointer;font-size:.9rem;line-height:1}
-.week-delete-day:hover{background:#fff0f0;outline:1px solid #efb6b6}
-.week-meal-entry{position:relative;margin-bottom:6px;padding-right:28px}
-.week-meal-entry .week-meal{margin-bottom:0}
-.week-delete-meal{position:absolute;right:0;top:0;display:flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;border:0;border-radius:7px;background:#fff0f0;color:#b42318;font-size:1rem;font-weight:800;line-height:1;cursor:pointer}
-.week-delete-meal:hover{background:#ffd9d6;outline:1px solid #e6a19b}
-:root[data-theme="dark"] .week-delete-day:hover,:root[data-theme="dark"] .week-delete-meal{background:#4a2424;color:#ffb4ae}
-:root[data-theme="dark"] .week-delete-meal:hover{background:#62302f}
+## Bezpieczeństwo
+
+Brak logowania oznacza, że każda osoba znająca adres aplikacji może odczytać i zmienić dane. Nie przechowuj w niej informacji medycznych ani innych danych wrażliwych. Najbezpieczniej nie udostępniać adresu publicznie.
+
+## Uruchomienie lokalne
+
+1. `npm install`
+2. `vercel dev`
+
+Do lokalnego zapisu online potrzebny jest token Blob w pliku `.env.local`.
+
+## Import i eksport Excel
+
+W sekcji **Dane** dostępne są:
+- eksport całej zawartości do pliku `.xlsx`,
+- import pliku `.xlsx` lub `.xls`.
+
+Eksport tworzy arkusze: `Produkty`, `Przepisy`, `Skladniki`, `Plan_diety`, `Pomiary`.
+Najbezpieczniej wykonać eksport, edytować ten plik, a następnie zaimportować go ponownie. Import zastępuje aktualne dane zapisane online.
+
+## Koszyk zakupowy
+
+Zakładka **Koszyk** pozwala:
+- generować listę zakupów z planu diety dla wybranego zakresu dat,
+- sumować powtarzające się składniki,
+- grupować produkty według kategorii,
+- dodawać, edytować i usuwać pozycje ręcznie,
+- oznaczać produkty jako kupione,
+- eksportować i importować arkusz `Lista_zakupow` w Excelu.
+
+Produkty mają teraz pole `Kategoria`, wykorzystywane przy generowaniu koszyka.
+
+## Nadpisywanie pliku Vercel Blob
+
+Zapis pliku `diet-app/diet-data.json` używa opcji `allowOverwrite: true`.
+
+## Wersja v7
+- naprawiona wyszukiwarka produktów z widocznym tekstem i przyciskiem Wyczyść,
+- wyszukiwanie produktów podczas dodawania składników przepisu,
+- wyszukiwanie przepisów podczas dodawania posiłku do planu.
+
+## Jednostki domowe
+Produkty mają jednostkę bazową `g` lub `ml` oraz opcjonalne przeliczniki dla: sztuki, kromki, szklanki, łyżki, łyżeczki, garści, plastra i opakowania. W przepisie można wybrać tylko jednostki skonfigurowane dla danego produktu. Aplikacja przelicza je na g/ml do obliczeń wartości odżywczych i generowania koszyka.
+
+## Liczba porcji w planie diety
+
+Podczas dodawania lub edycji posiłku można ustawić liczbę porcji (np. 0,5; 1; 1,5; 2). Liczba porcji jest uwzględniana w:
+- podsumowaniu kalorii i makroskładników dnia,
+- szczegółach składników posiłku,
+- generowaniu koszyka zakupowego,
+- eksporcie i imporcie arkusza `Plan_diety` w kolumnie `Liczba_porcji`.
 
 
-/* v20 — priorytet UI/UX 1 */
-:root{--text:#17211b;--muted:#66736b;--surface:#fff;--soft:#f4f7f5;--warning:#fff4dd}
-.eyebrow{display:block;color:var(--green);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
-.welcome-head,.panel-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}.welcome-head h2,.panel-title h3{margin:0}.text-btn{border:0;background:transparent;color:var(--green);font-weight:750;cursor:pointer}
-.today-hero{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center}.calorie-ring{width:150px;height:150px;border-radius:50%;display:grid;place-content:center;text-align:center;background:conic-gradient(var(--green) 0 68%,var(--green2) 68% 100%);box-shadow:inset 0 0 0 18px var(--surface)}.calorie-ring strong{font-size:1.7rem}.calorie-ring span{font-size:.78rem;color:var(--muted)}.today-main h3{margin:0 0 6px}.today-main p{margin:0 0 14px;color:var(--muted);line-height:1.5}.compact-goals{display:grid;gap:8px}.compact-goals>div{display:grid;grid-template-columns:95px minmax(80px,1fr) auto;align-items:center;gap:10px;font-size:.82rem}.compact-goals progress{width:100%;height:8px;accent-color:var(--green)}.compact-actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.dashboard-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:14px}
-.empty-state{text-align:center;padding:28px 18px;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}.empty-state h3{margin:8px 0 14px;color:inherit;font-size:1rem}.empty-icon{font-size:2rem;color:var(--green)}
-.action-menu{position:relative}.action-menu summary{list-style:none;width:40px;height:40px;display:grid;place-items:center;border-radius:10px;background:var(--soft);font-size:1.25rem;font-weight:800;cursor:pointer}.action-menu summary::-webkit-details-marker{display:none}.action-menu-pop{position:absolute;right:0;top:44px;z-index:20;min-width:150px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.14);display:grid}.action-menu-pop button{border:0;background:transparent;text-align:left;padding:10px 12px;border-radius:8px;color:inherit;cursor:pointer}.action-menu-pop button:hover{background:var(--soft)}.danger-text{color:#b42318!important}.favorite-btn{width:40px;height:40px;border:0;border-radius:10px;background:var(--soft);color:#d28b00;font-size:1.2rem;cursor:pointer}
-.mobile-nav,.more-sheet,.mobile-week{display:none}
-.settings-sections{display:grid;gap:14px}.settings-section{display:grid;grid-template-columns:270px 1fr;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}.settings-section>header{display:flex;gap:14px;padding:22px;background:var(--soft)}.settings-section>header>span{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:50%;background:var(--green2);color:var(--green);font-weight:800}.settings-section h3{margin:0 0 6px}.settings-section p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}.settings-content{padding:22px}.settings-actions{display:flex;gap:8px;flex-wrap:wrap}.settings-details{margin:16px 0}.settings-details summary{cursor:pointer;font-weight:750;color:var(--green)}.settings-details .form-grid{margin-top:12px}.warning-box{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--warning);color:#7a5200}.warning-box p{margin:4px 0 0}.danger-outline{border:1px solid #d92d20;background:transparent;color:#b42318;border-radius:10px;padding:10px 14px;font-weight:750;cursor:pointer}
-.mobile-day-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}.mobile-day-card>header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line)}.mobile-day-card h3{margin:0;text-transform:capitalize}.mobile-day-card header p{margin:4px 0 0;color:var(--muted);font-size:.82rem}.mobile-day-meals{display:grid;gap:8px;padding:10px 0}.mobile-meal-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.mobile-meal-row>button{display:grid;grid-template-columns:58px 1fr;gap:10px;align-items:center;width:100%;border:0;background:var(--soft);border-radius:12px;padding:10px;text-align:left;color:inherit}.mobile-meal-row time{font-weight:800;color:var(--green)}.mobile-meal-row span{display:grid;gap:2px}.mobile-meal-row small{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.week-add-mobile{width:100%;border:1px dashed var(--green);background:transparent;color:var(--green);padding:11px;border-radius:11px;font-weight:800}.confirm-copy{padding:4px 0 10px;line-height:1.55}.more-sheet{position:fixed;inset:0;z-index:90;background:rgba(10,20,14,.38);align-items:flex-end}.more-sheet-card{width:100%;background:var(--surface);border-radius:20px 20px 0 0;padding:18px;padding-bottom:calc(18px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.18)}.more-sheet-head{display:flex;align-items:center;justify-content:space-between}.more-sheet-head h2{margin:0}.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.more-grid button{border:1px solid var(--line);background:var(--soft);border-radius:14px;padding:18px 12px;font-weight:750;color:inherit}
-:focus-visible{outline:3px solid color-mix(in srgb,var(--green) 55%,white);outline-offset:2px}
-@media(max-width:800px){
-  body{padding-bottom:76px}.tabs{display:none}.topbar{position:sticky;top:0;z-index:45}.topbar .top-actions #installBtn{display:none!important}.mobile-nav{display:grid;position:fixed;left:0;right:0;bottom:0;z-index:70;grid-template-columns:repeat(5,1fr);background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(0,0,0,.08)}.mobile-nav button{min-height:52px;border:0;background:transparent;color:var(--muted);display:grid;place-items:center;align-content:center;gap:2px;font-size:.7rem}.mobile-nav button span{font-size:1.1rem}.mobile-nav button.active{color:var(--green)}.mobile-nav .mobile-add{width:54px;height:54px;min-height:54px;margin:-18px auto 0;border-radius:50%;background:var(--green);color:white;box-shadow:0 8px 18px rgba(37,109,74,.28)}.mobile-nav .mobile-add span{font-size:1.65rem}.more-sheet:not(.hidden){display:flex}.today-hero{grid-template-columns:1fr}.calorie-ring{margin:auto}.dashboard-grid{grid-template-columns:1fr}.welcome-head{align-items:flex-start}.welcome-head .primary{white-space:nowrap}.settings-section{grid-template-columns:1fr}.settings-section>header{padding:16px}.settings-content{padding:16px}.desktop-week{display:none}.mobile-week{display:grid;gap:12px}.week-nav{display:grid;grid-template-columns:1fr 1fr}.week-nav strong{grid-column:1/-1;order:-1}.week-nav button[data-action="current-week"]{display:none}.section-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.section-actions .primary{grid-column:1/-1;order:-1}.section-actions button{min-height:44px}.item-actions{width:auto;align-self:flex-start}.compact-goals>div{grid-template-columns:75px 1fr;}.compact-goals b{grid-column:2;text-align:right;font-size:.76rem}.compact-actions{display:grid;grid-template-columns:1fr 1fr}.compact-actions button:last-child{grid-column:1/-1}
-}
-@media(max-width:460px){.welcome-head{display:grid;grid-template-columns:1fr}.welcome-head .primary{width:100%}.today-hero{padding:16px}.section-actions{grid-template-columns:1fr}.section-actions .primary{grid-column:auto}.more-grid{grid-template-columns:1fr 1fr}.topbar p{max-width:180px}.mobile-meal-row .action-menu summary{width:36px;height:36px}.settings-section>header>span{display:none}}
-:root[data-theme="dark"]{--surface:#151f19;--soft:#213128;--muted:#a8b5ad;--warning:#4c3a12}:root[data-theme="dark"] .action-menu-pop,:root[data-theme="dark"] .mobile-nav,:root[data-theme="dark"] .more-sheet-card,:root[data-theme="dark"] .settings-section{background:var(--surface)}
+## Sugerowane godziny posiłków
 
-/* v22: formularz przepisu — kroki, walidacja i szkice */
-.recipe-wizard{display:grid;gap:18px}.recipe-stepper{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:4px;background:#f1f5f2;border-radius:14px}.recipe-step-tab{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:9px;border-radius:11px;background:transparent;color:#617067;font-weight:700}.recipe-step-tab span{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#dde6e0}.recipe-step-tab.active{background:#fff;color:var(--green);box-shadow:0 2px 10px #1b3b2714}.recipe-step-tab.active span{background:var(--green);color:#fff}.recipe-step{display:none}.recipe-step.active{display:block}.required-mark{color:var(--danger)}.checkbox-field{display:flex;grid-column:auto;flex-direction:row;align-items:center;gap:9px;align-self:end;min-height:44px}.checkbox-field input{width:auto}.ingredient-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:12px}.ingredient-section-head h3{margin:0}.ingredient-section-head p{margin:4px 0 0;color:#65736a;font-size:.88rem}.ingredient-rows{display:grid;gap:10px}.ingredient-picker{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.ingredient-main{display:grid;grid-template-columns:minmax(240px,2fr) minmax(100px,.65fr) minmax(110px,.7fr) 44px;align-items:end;gap:10px}.product-search-field{display:grid;grid-template-columns:1fr;gap:6px}.product-search-field select{margin-top:2px}.ingredient-remove{margin-bottom:0}.ingredient-conversion{display:block;margin-top:8px;color:#65736a;font-size:.82rem}.ingredient-empty-help{margin-top:12px;padding:10px 12px;background:var(--green2);border-radius:10px;color:var(--green);font-size:.85rem}.draft-status{margin-top:14px;color:#65736a;font-size:.82rem;text-align:right}.field-invalid input,.field-invalid select,.field-invalid textarea{border-color:var(--danger);box-shadow:0 0 0 3px rgba(166,41,41,.1)}.field-error{color:var(--danger);font-weight:600}.recipe-preview{padding:14px;background:var(--green2);border-radius:14px}.recipe-preview h3{margin:0 0 7px}.recipe-preview p{margin:4px 0}.confirm-overlay{position:fixed;inset:0;z-index:100;background:rgba(20,30,24,.62);display:grid;place-items:center;padding:16px}.confirm-card{width:min(460px,100%);background:#fff;border-radius:18px;padding:20px;box-shadow:0 20px 60px #0004}.confirm-card h3{margin:0 0 8px}.confirm-card p{color:#58675e;line-height:1.5}.recipe-wizard-actions{position:sticky;bottom:-18px;background:#fff;padding:12px 0 2px;border-top:1px solid var(--line);z-index:3}
-:root[data-theme="dark"] .recipe-stepper,:root[data-theme="dark"] .confirm-card,:root[data-theme="dark"] .ingredient-picker,:root[data-theme="dark"] .recipe-wizard-actions{background:#151f19;color:#e8f0eb}:root[data-theme="dark"] .recipe-step-tab.active{background:#26352c}
-@media(max-width:700px){.recipe-stepper{gap:3px}.recipe-step-tab{font-size:.76rem;gap:5px;padding:7px 3px}.recipe-step-tab span{width:22px;height:22px}.ingredient-section-head{align-items:stretch;flex-direction:column}.ingredient-main{grid-template-columns:1fr 1fr}.product-search-field{grid-column:1/-1}.ingredient-remove{align-self:end;justify-self:end}.recipe-wizard-actions{bottom:-16px;display:grid;grid-template-columns:1fr 1fr}.recipe-wizard-actions [data-close]{grid-column:1/-1;order:3}.draft-status{text-align:left}}
+W formularzu dodawania posiłku godzina jest podpowiadana na podstawie typu: śniadanie 08:00, II śniadanie 11:00, obiad 15:00, podwieczorek 17:30, kolacja 20:00, przekąska 13:00, inne 12:00. Godzinę można zawsze zmienić ręcznie. Podczas edycji istniejącego posiłku jego zapisana godzina pozostaje bez zmian.
 
-/* v23: UI/UX priorytet 3 — typografia, dotyk, kontrast i dostępność */
-:root{
-  --text:#17211b;
-  --muted-strong:#526159;
-  --surface:#ffffff;
-  --soft:#f0f4f1;
-  --focus:#0b7a4b;
-  --font-xs:.8125rem;
-  --font-sm:.875rem;
-  --font-base:1rem;
-  --font-lg:1.125rem;
-  --font-xl:1.375rem;
-  --font-2xl:1.625rem;
-  --space-1:4px;
-  --space-2:8px;
-  --space-3:12px;
-  --space-4:16px;
-  --space-5:24px;
-}
-html{font-size:16px;scroll-behavior:smooth}
-body{font-size:var(--font-base);line-height:1.5;color:var(--text);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{line-height:1.25;letter-spacing:-.012em;color:inherit}
-h1{font-size:var(--font-xl);font-weight:800}
-.section-head h2{font-size:var(--font-2xl);font-weight:800}
-.panel h3,.item h3{font-size:var(--font-lg);font-weight:750}
-p,.item p,.instructions{line-height:1.55}
-small,.field-help,.search-result-info,.ingredient-conversion{font-size:var(--font-sm);line-height:1.45;color:var(--muted-strong)}
-.topbar p,.stat span,.item p,.shopping-name small,.day-heading>span{color:var(--muted-strong)}
-label{font-size:var(--font-sm);font-weight:700;color:var(--text)}
 
-/* Minimalny, wygodny obszar dotykowy */
-button,.file-label,summary{min-height:44px}
-.primary,.secondary,.danger-btn,.ghost,.tabs button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:10px 15px}
-.icon-btn{display:inline-grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px;font-size:1.05rem;line-height:1}
-.icon-btn span{display:block;line-height:1}
-input,select,textarea{min-height:46px;padding:11px 13px;font-size:1rem;color:var(--text)}
-textarea{min-height:112px}
-.shopping-check input{width:26px;height:26px;min-height:26px}
-.action-menu summary{width:44px;height:44px;display:grid;place-items:center;border-radius:12px}
-.action-menu-pop button{min-height:44px;font-size:.9375rem}
-.week-add{min-width:44px;min-height:44px}
+## Eksport PDF
+W zakładce Plan lub Dane wybierz **Eksportuj PDF**. Wskaż zakres dat. Aplikacja otworzy poziomy podgląd A4: jeden dzień na stronę, posiłki w kolumnach. W oknie drukowania wybierz **Zapisz jako PDF**.
 
-/* Kontrast i stany interakcji */
-.secondary,.ghost,.tabs button{color:#2f4036;background:#edf2ee;border:1px solid transparent}
-.secondary:hover,.ghost:hover,.tabs button:hover{background:#e3ebe6}
-.primary:hover{filter:brightness(.94)}
-.danger-btn{border:1px solid #e5bcbc;background:#fff4f4;color:#8b1e1e}
-.danger-btn:hover{background:#fde8e8}
-.badge{font-size:var(--font-xs);padding:5px 9px}
-.warnings>div{border:1px solid #e7ca82;background:#fff7df;color:#694900}
 
-/* Bardzo widoczny focus klawiatury */
-:focus{outline:none}
-:focus-visible{outline:3px solid var(--focus)!important;outline-offset:3px!important;box-shadow:0 0 0 2px var(--surface)!important}
-input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--focus);box-shadow:0 0 0 3px rgba(11,122,75,.18)!important}
-.skip-link{position:fixed;left:12px;top:10px;z-index:999;transform:translateY(-160%);background:#fff;color:#123d2a;padding:10px 14px;border-radius:10px;font-weight:800;box-shadow:0 8px 25px #0003}
-.skip-link:focus{transform:translateY(0)}
+## Kopiowanie poprzedniego dnia
+W zakładce Plan diety użyj przycisku **Skopiuj poprzedni dzień**, wybierz dzień docelowy, a aplikacja skopiuje wszystkie posiłki z dnia wcześniejszego wraz z godzinami, przepisami i liczbą porcji.
 
-/* Spójne stany puste */
-.empty-state,.empty{display:grid;justify-items:center;text-align:center;gap:10px;padding:38px 22px;color:var(--muted-strong);background:var(--surface);border:1px dashed #afc0b5;border-radius:16px}
-.empty-state .empty-icon,.empty-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:var(--green2);color:var(--green);font-size:1.7rem;font-weight:400}
-.empty-state h3{margin:0;color:var(--text);font-size:var(--font-lg)}
-.empty-state p{max-width:420px;margin:0 0 4px;color:var(--muted-strong);font-size:var(--font-sm)}
-.empty-state .primary{margin-top:4px}
+## Rozszerzenia v14
+- cele kalorii i makroskładników z paskami realizacji,
+- ostrzeżenia planu,
+- widok tygodniowy i kopiowanie poprzedniego tygodnia,
+- szablony dni,
+- ulubione, tagi, czas, trudność i notatki przepisów,
+- produkty „mam w domu”, wielkości i ceny opakowań,
+- wykres masy ciała,
+- personalizowane godziny posiłków,
+- jasny/ciemny/systemowy wygląd,
+- 5 automatycznych kopii danych,
+- wykrywanie jednoczesnej edycji na innym urządzeniu.
 
-/* Czytelniejsze karty i rytm odstępów */
-.card,.panel{padding:20px}
-.item{padding:16px;gap:16px}
-.list{gap:12px}
-.section-head{margin-bottom:20px}
-.toolbar{margin-bottom:16px}
-.recipe-details-content{gap:16px}
-.modal-card{padding:22px}
-.form-grid{gap:16px}
-.form-actions{gap:10px;margin-top:22px}
+## Poprawka v15 – zapis danych
 
-/* Tooltip dla przycisków ikonowych na desktopie */
-.icon-btn[title]{position:relative}
-@media(hover:hover){.icon-btn[title]:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:120;white-space:nowrap;background:#17211b;color:#fff;font-size:.75rem;font-weight:650;padding:6px 8px;border-radius:7px;pointer-events:none}}
+Zapis nie nadpisuje już jednego publicznego pliku Blob. Każda operacja tworzy unikalną wersję JSON, a API pobiera najnowszą wersję. Eliminuje to fałszywe konflikty powodowane przez pamięć podręczną Vercel Blob. Aplikacja zachowuje maksymalnie 50 technicznych wersji pliku oraz nadal obsługuje starszy plik `diet-app/diet-data.json`.
 
-/* Ciemny motyw z mocniejszym kontrastem */
-:root[data-theme="dark"]{--text:#eef5f0;--muted-strong:#bdcbc2;--surface:#151f19;--soft:#213128;--focus:#72d8a4}
-:root[data-theme="dark"] body{color:var(--text)}
-:root[data-theme="dark"] .secondary,:root[data-theme="dark"] .ghost,:root[data-theme="dark"] .tabs button{color:#e6efe9;background:#26362d}
-:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{color:#f1f6f3}
-:root[data-theme="dark"] .empty-state,:root[data-theme="dark"] .empty{border-color:#52665a}
 
-/* Mobile: większe odstępy i bezpieczne cele dotykowe */
-@media(max-width:800px){
-  main{padding-left:14px;padding-right:14px}
-  .section-head h2{font-size:1.45rem}
-  .card,.panel{padding:17px}
-  .item{padding:15px}
-  .mobile-nav button{min-height:56px;font-size:.75rem}
-  .mobile-nav button span{font-size:1.2rem}
-  .mobile-day-card header{gap:12px}
-  .mobile-meal-row>button{min-height:54px;padding:9px 4px;text-align:left}
-  .week-add-mobile{min-height:48px}
-  .action-menu-pop{min-width:190px}
-  .modal-card{padding:18px}
-  .modal-head{padding-bottom:14px}
-}
-@media(max-width:430px){
-  body{font-size:1rem}
-  .topbar p{font-size:.8125rem}
-  .cards{grid-template-columns:1fr}
-  .stat strong{font-size:1.55rem}
-  .form-actions>button{min-height:48px}
-  .recipe-step-tab{min-height:48px}
-  .ingredient-main{gap:12px}
-}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+## Wersja 16 – usuwanie całego koszyka
 
-/* v25: etap 1 */
-.recipe-toolbar{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:10px}
-.recipe-meta-line,.usage-stats,.range-presets,.portion-tools,.chart-legend{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.badge.subtle{background:var(--surface-2,#eef3ef);color:var(--text,#25332b)}
-.usage-stats{font-size:.88rem;color:var(--muted);margin:.45rem 0}
-.portion-tools{grid-column:1/-1}.portion-tools button{flex:1}
-.range-presets{margin:12px 0}.range-presets button{min-width:72px}
-.progress-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
-.progress-summary>div{padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2,#f6f8f6)}
-.progress-summary span{display:block;font-size:.8rem;color:var(--muted)}
-.progress-summary strong{display:block;font-size:1.1rem;margin-top:3px}
-.chart-legend{font-size:.82rem;color:var(--muted);justify-content:center}
-@media(max-width:720px){.recipe-toolbar{grid-template-columns:1fr}.progress-summary{grid-template-columns:repeat(2,1fr)}.portion-tools{flex-direction:column}.portion-tools button{width:100%}}
+W zakładce Koszyk dodano przycisk „Usuń cały koszyk” z potwierdzeniem i informacją o liczbie usuwanych pozycji.
 
-/* Planowanie posiłków v26 */
-.day-completeness{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}.day-completeness b{padding:4px 9px;border-radius:999px;font-size:.78rem}.day-completeness span{font-size:.82rem;color:#56655c}.day-completeness.complete b{background:#dff4e8;color:#17633f}.day-completeness.incomplete b{background:#fff1cf;color:#805b00}.day-completeness.over b{background:#fde5e5;color:#982b2b}.day-completeness.empty b{background:#edf1ee;color:#526159}.quick-day-add{margin-top:12px}.meal-impact{padding:14px;border:1px solid #cfe2d7;border-radius:14px;background:#f4fbf7}.meal-impact.over{border-color:#efb8b8;background:#fff6f6}.meal-impact h3{margin:0 0 8px}.meal-impact div{display:flex;gap:10px;flex-wrap:wrap}.meal-impact p{margin:8px 0 0}.quick-add-head{display:flex;justify-content:space-between;gap:10px;padding:12px 14px;background:var(--green2);border-radius:12px;margin-bottom:12px}.quick-recipe-tabs{display:flex;gap:8px;overflow:auto;margin:12px 0}.quick-recipe-tabs .active{background:var(--green);color:white}.quick-recipe-results{display:grid;gap:8px;max-height:52vh;overflow:auto}.quick-recipe-card{display:flex;justify-content:space-between;align-items:center;text-align:left;gap:12px;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff}.quick-recipe-card span{display:grid;gap:3px}.quick-recipe-card small{color:#65736a}.quick-recipe-card>strong{color:var(--green)}.full-width{width:100%;margin-top:12px}.date-check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}.date-check-grid label,.weekday-picker label{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid var(--line);border-radius:10px}.date-check-grid input,.weekday-picker input{width:auto}.weekday-picker{display:flex;gap:6px;flex-wrap:wrap}.planning-panel{position:fixed;inset:0;z-index:45;background:rgba(20,30,24,.35);display:flex;justify-content:flex-end}.planning-panel-card{height:100%;width:min(430px,100%);background:#fff;padding:20px;overflow:auto;box-shadow:-12px 0 40px #0002}.planner-panel-head{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}.planner-panel-head h2{margin:8px 0 4px;font-size:1.25rem}.planner-panel-head p{margin:0;color:#66746b}.planner-nutrition{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:14px;background:var(--green2);border-radius:14px}.planner-nutrition b{grid-column:1/-1;font-size:1.5rem;color:var(--green)}.planner-actions{display:grid;gap:9px;margin-top:16px}.mobile-day-planner{display:none}.mobile-plan-actions{position:sticky;bottom:76px;display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:14px}.mobile-day-switcher{display:flex;align-items:center;justify-content:space-between;gap:8px}.mobile-date-button{flex:1;background:transparent;display:grid;gap:2px}.mobile-date-button span{color:#66746b}.mobile-day-status{margin:12px 0}.mobile-day-planner .mobile-meal-row>button:first-child{min-height:64px}.mobile-day-planner .mobile-meal-row time{font-weight:700;color:var(--green)}
-@media(max-width:800px){.mobile-day-planner{display:block}.mobile-week{display:block}.mobile-day-planner~*{display:none}.date-check-grid{grid-template-columns:1fr}.planning-panel-card{width:100%;height:auto;max-height:92dvh;margin-top:auto;border-radius:18px 18px 0 0}.planning-panel{align-items:flex-end}.desktop-week{display:none!important}}
 
-/* v27: boczne panele — widoczna stopka akcji i brak kolizji z dolną nawigacją */
-.planning-panel{
-  z-index:95;
-  overscroll-behavior:contain;
-}
-.planning-panel-card{
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-  overflow-y:auto;
-  overscroll-behavior:contain;
-  padding-bottom:max(20px,env(safe-area-inset-bottom));
-}
-.planner-panel-head{
-  position:sticky;
-  top:-20px;
-  z-index:3;
-  flex:0 0 auto;
-  background:var(--surface,#fff);
-  padding-top:20px;
-}
-.planner-actions{
-  position:sticky;
-  bottom:-20px;
-  z-index:4;
-  flex:0 0 auto;
-  margin:18px -20px -20px;
-  padding:14px 20px max(20px,env(safe-area-inset-bottom));
-  background:linear-gradient(to bottom,rgba(255,255,255,.94),var(--surface,#fff) 22%);
-  border-top:1px solid var(--line);
-  box-shadow:0 -10px 22px rgba(20,30,24,.08);
-}
-:root[data-theme="dark"] .planner-panel-head,
-:root[data-theme="dark"] .planner-actions{
-  background:#151f19;
-}
-@media(prefers-color-scheme:dark){
-  :root[data-theme="system"] .planner-panel-head,
-  :root[data-theme="system"] .planner-actions{background:#151f19}
-}
-@media(max-width:800px){
-  .planning-panel-card{
-    width:100%;
-    height:min(92dvh,calc(100dvh - 12px));
-    max-height:none;
-    border-radius:18px 18px 0 0;
-    padding-bottom:0;
-  }
-  .planner-panel-head{top:-20px}
-  .planner-actions{
-    bottom:0;
-    margin:18px -20px 0;
-    padding-bottom:max(16px,env(safe-area-inset-bottom));
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  .planner-actions .primary,
-  .planner-actions .danger-btn:last-child{
-    grid-column:1/-1;
-  }
-}
-@media(max-width:420px){
-  .planner-actions{grid-template-columns:1fr}
-  .planner-actions .primary,
-  .planner-actions .danger-btn:last-child{grid-column:auto}
-}
+## Wersja v17
+
+- rozbudowany widok tygodniowy z nawigacją, sumami dnia i szybkim dodawaniem/edycją,
+- kopiowanie dnia na wiele dat i poprzedniego tygodnia,
+- duplikowanie przepisów,
+- cofanie usunięcia przez 7 sekund,
+- koszyk pokazuje liczbę opakowań, nadwyżkę i szacowany koszt.
+
+## Wersja v18
+- usuwanie pojedynczych posiłków bezpośrednio w widoku tygodniowym,
+- usuwanie wszystkich posiłków z wybranego dnia,
+- potwierdzenie przed usunięciem całego dnia,
+- możliwość cofnięcia obu operacji przez 7 sekund.
+
+
+## Wersja v19
+- Naprawiono utratę focusu w wyszukiwarce przepisów podczas wpisywania kolejnych znaków.
+
+
+## Wersja v20 — przebudowa UI/UX
+- dolna nawigacja mobilna i panel Więcej
+- nowy ekran Start skoncentrowany na dzisiejszym planie
+- pionowy widok tygodnia na telefonie
+- menu akcji zamiast wielu ikon
+- własne dialogi dla najważniejszych operacji
+- uporządkowana sekcja Ustawienia
+
+
+## Wersja v21 — naprawa uruchamiania
+
+- przywrócono funkcje openModal i closeModal,
+- przywrócono renderowanie Produktów, Przepisów, Planu, Koszyka, Pomiarów i Ustawień,
+- naprawiono zatrzymanie aplikacji na komunikacie „Łączenie z plikiem online…”,
+- cache PWA: moja-dieta-v21.
+
+## Wersja v22 — UI/UX priorytet 2
+- wieloetapowy formularz przepisu,
+- uproszczone wiersze składników i bieżące przeliczenia,
+- automatyczny lokalny zapis szkicu,
+- ostrzeżenie przed zamknięciem niezapisanej edycji,
+- walidacja z komunikatami bezpośrednio przy polach.
+
+## Wersja v23 – UI/UX priorytet 3
+
+- spójna skala typografii i rytm odstępów,
+- większe pola i przyciski dotykowe (minimum 44 px),
+- ujednolicone ikony edycji i usuwania z etykietami dostępności,
+- poprawiony kontrast tekstów i stanów ostrzegawczych,
+- wyraźny focus klawiatury oraz link „Przejdź do treści”,
+- komunikaty statusu z `aria-live`,
+- ulepszone stany puste z jasnym kolejnym krokiem,
+- wsparcie `prefers-reduced-motion`.
+
+## Wersja v24 – poprawka formularza pomiarów
+- reset stanu formularza przepisu przy każdym otwarciu modala,
+- ostrzeżenie o niezapisanym szkicu działa wyłącznie w formularzu przepisu,
+- zapis pomiaru zawierającego tylko masę ciała działa prawidłowo.
+
+
+## Wersja v25 – planowanie i postępy
+
+Dodano:
+- dopasowanie liczby porcji do kalorii pozostałych w danym dniu,
+- szybkie zakresy generowania koszyka: dziś, 3, 7 i 14 dni,
+- planowanie jednego przepisu na kilka kolejnych dni,
+- statystyki użycia i datę ostatniego użycia przepisu,
+- kolekcje przepisów z filtrowaniem oraz obsługą Excel,
+- rozszerzony widok postępów z zakresami dat, tempem zmian i średnią 7-dniową.
+
+## Planowanie posiłków v26
+
+- szybkie dodawanie posiłku z listą polecanych, ostatnich i ulubionych przepisów,
+- kopiowanie pojedynczego posiłku na wiele dat,
+- cykliczne powtarzanie codziennie, co 2 dni lub w wybrane dni tygodnia,
+- wysuwany panel szczegółów dnia i posiłku,
+- podgląd kalorii oraz makroskładników przed zapisem,
+- status kompletności każdego dnia,
+- mobilny widok pojedynczego dnia z nawigacją poprzedni/następny,
+- przenoszenie posiłku na inną datę, godzinę i typ.
+
+
+## Wersja v31
+- poprawiono warstwy wszystkich modali i paneli na telefonie,
+- dolna nawigacja jest ukrywana podczas otwarcia formularza lub panelu,
+- stopki formularzy pozostają widoczne ponad obszarem bezpiecznym ekranu,
+- pasek akcji dnia uwzględnia rzeczywistą wysokość dolnego menu.

@@ -74,7 +74,16 @@
   </div>
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script>
+    window.addEventListener('error', function () {
+      const status = document.getElementById('syncStatus');
+      if (status && /Łączenie|Pobieranie/.test(status.textContent || '')) {
+        status.textContent = 'Błąd uruchamiania aplikacji';
+        status.style.color = '#a62929';
+      }
+    });
+  </script>
   <script async src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script type="module" src="/app.js"></script>
+  <script type="module" src="/app.js" onerror="document.getElementById('syncStatus').textContent='Nie udało się wczytać app.js';document.getElementById('syncStatus').style.color='#a62929'"></script>
 </body>
 </html>

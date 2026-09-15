@@ -202,3 +202,9 @@ Dodano:
 - Przy usuwaniu przepisów usuwane są ich wystąpienia z planu diety.
 
 Przed publikacją można uruchomić `node validate-release.mjs`, aby sprawdzić package.json i manifest.webmanifest.
+
+## Wersja v36 – poprawka uruchamiania
+- przywrócono brakującą funkcję `renderSettings()`, która blokowała start aplikacji w v35,
+- dodano komunikat awaryjny, jeśli `app.js` nie załaduje się lub wystąpi błąd podczas uruchamiania,
+- rozszerzono `validate-release.mjs` o kontrolę wymaganych funkcji oraz składni `app.js` i `api/data.js`,
+- cache PWA: `moja-dieta-v36`.

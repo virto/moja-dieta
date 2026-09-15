@@ -1,4 +1,4 @@
-const CACHE = 'moja-dieta-v33';
+const CACHE = 'moja-dieta-v35';
 const APP_SHELL = ['/', '/index.html', '/styles.css', '/app.js', '/manifest.webmanifest', '/icons/icon-192.png', '/icons/icon-512.png'];
 
 self.addEventListener('install', (event) => {

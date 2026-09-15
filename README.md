@@ -190,3 +190,15 @@ Dodano:
 - dolna nawigacja jest ukrywana podczas otwarcia formularza lub panelu,
 - stopki formularzy pozostają widoczne ponad obszarem bezpiecznym ekranu,
 - pasek akcji dnia uwzględnia rzeczywistą wysokość dolnego menu.
+
+
+## Wersja v35
+- Dodawanie nowego produktu bezpośrednio z kroku „Składniki” w formularzu przepisu.
+- Paginacja listy produktów i przepisów (10/20/50/100 pozycji na stronę).
+- Wielokrotny wybór produktów i przepisów.
+- Przycisk „Zaznacz wszystko” działa dla aktualnych wyników wyszukiwania/filtrów.
+- Masowe usuwanie z potwierdzeniem i możliwością cofnięcia.
+- Przy usuwaniu produktów usuwane są ich odwołania ze składników przepisów.
+- Przy usuwaniu przepisów usuwane są ich wystąpienia z planu diety.
+
+Przed publikacją można uruchomić `node validate-release.mjs`, aby sprawdzić package.json i manifest.webmanifest.
